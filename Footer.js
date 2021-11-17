@@ -9,13 +9,14 @@ import {
 const styles = StyleSheet.create({
   footer: {
     flex: 0.1,
-    backgroundColor: 'grey',
+    backgroundColor: '#32a852',
     alignItems: 'center',
     justifyContent: 'center',
   },
   footerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: 'white',
   },
 });
 
