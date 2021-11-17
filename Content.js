@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   input: {
+    color: 'black',
     height: 40,
     margin: 12,
     borderWidth: 1,
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   item: {
+    color: 'black',
     margin: 5,
     fontSize: 18,
     fontWeight: 'bold',
@@ -57,6 +59,7 @@ const Content = function () {
     <View style={styles.content}>
       <TextInput
         placeholder="Change my mood"
+        placeholderTextColor="grey" 
         style={styles.input}
         onChangeText={changeHandler}
         onSubmitEditing={submitHandler}
