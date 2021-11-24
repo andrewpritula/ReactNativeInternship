@@ -1,41 +1,16 @@
 /* eslint-disable func-names */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
-  StyleSheet,
+  Button,
   TextInput,
   Text,
   View,
   ScrollView,
 } from 'react-native';
+import { styles } from './Styles';
 
-const styles = StyleSheet.create({
-  content: {
-    flex: 0.8,
-    backgroundColor: 'white',
-  },
-  input: {
-    color: 'black',
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
-  },
-  title: {
-    margin: 10,
-    color: '#536658',
-    fontSize: 14,
-  },
-  item: {
-    color: 'black',
-    margin: 5,
-    fontSize: 18,
-    fontWeight: 'bold',
-    paddingLeft: 5
-  },
-});
-
-const Content = function () {
+const Profile = function ({ navigation }) {
   const [name] = useState('John');
   const [sername] = useState('Wick');
   const [nickname] = useState('Boogeyman');
@@ -44,7 +19,7 @@ const Content = function () {
   const [nationality] = useState('Soviet, American');
   const [occupation] = useState('Proffesional hitman');
   const [mood, setMood] = useState('Where is my dog?');
-  const [textInput, setTextInput] = useState(); 
+  const [textInput, setTextInput] = useState();
 
   const submitHandler = (value) => {
     setTextInput('');
@@ -57,6 +32,16 @@ const Content = function () {
 
   return (
     <View style={styles.content}>
+      <View style={styles.btnContainer}>
+        <Button
+          title="Go to second screen"
+          onPress={() => {
+            navigation.navigate('SecondScreen', {
+              stringParam: 'String from Profile screen',
+            });
+          }}
+        />
+      </View>
       <TextInput
         placeholder="Change my mood"
         placeholderTextColor="grey" 
@@ -87,4 +72,10 @@ const Content = function () {
   );
 };
 
-export default Content;
+Profile.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default Profile;
