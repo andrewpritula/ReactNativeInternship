@@ -1,5 +1,6 @@
 /* eslint-disable func-names */
 import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -31,7 +32,7 @@ const Profile = function ({ navigation }) {
   };
 
   return (
-    <View style={styles.content}>
+    <SafeAreaView style={styles.content} edges={['top', 'left', 'right']}>
       <View style={styles.btnContainer}>
         <Button
           title="Go to second screen"
@@ -68,7 +69,7 @@ const Profile = function ({ navigation }) {
         <Text style={styles.title}>Mood:</Text>
         <Text style={styles.item}>{mood}</Text>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
