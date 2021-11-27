@@ -3,7 +3,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
-import { styles } from './Styles';
+import styles from './Styles';
 
 const SecondScreen = function ({ route }) {
   const { stringParam } = route.params;

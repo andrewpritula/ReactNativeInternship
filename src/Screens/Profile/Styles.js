@@ -32,5 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// eslint-disable-next-line import/prefer-default-export
-export { styles };
+export default styles;

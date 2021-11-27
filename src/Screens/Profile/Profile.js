@@ -9,7 +9,7 @@ import {
   View,
   ScrollView,
 } from 'react-native';
-import { styles } from './Styles';
+import styles from './Styles';
 
 const Profile = function ({ navigation }) {
   const [name] = useState('John');
@@ -37,7 +37,7 @@ const Profile = function ({ navigation }) {
         <Button
           title="Go to second screen"
           onPress={() => {
-            navigation.navigate('SecondScreen', {
+            navigation.navigate('StackSecondScreen', {
               stringParam: 'String from Profile screen',
             });
           }}

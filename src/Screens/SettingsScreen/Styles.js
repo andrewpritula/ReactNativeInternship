@@ -14,9 +14,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingLeft: 5
   },
-  item: {
-    color: 'red',
-  }
 });
 
 export default styles;
