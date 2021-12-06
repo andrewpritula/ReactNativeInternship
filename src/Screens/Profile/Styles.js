@@ -1,10 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  content: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-  },
   btnContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -29,6 +25,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     paddingLeft: 5
+  },
+  button: {
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: 'lightblue'
   },
 });
 

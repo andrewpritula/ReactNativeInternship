@@ -1,12 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import About from '../Screens/About/About';
+import About from '../screens/About/About';
 
 const Stack = createStackNavigator();
 
-// eslint-disable-next-line func-names
-const AboutStackNavigator = function () {
+const AboutStackNavigator = function AboutStackNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen

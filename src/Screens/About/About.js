@@ -1,15 +1,14 @@
-/* eslint-disable func-names */
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import styles from './Styles';
+import withLayout from '../../hoc/withLayout';
 
-const About = function () {
+const About = function About() {
   return (
-    <SafeAreaView style={styles.page} edges={['top', 'left', 'right']}>
+    <View style={styles.container}>
       <Text style={styles.title}>About Screen</Text>
-    </SafeAreaView>
+    </View>
   );
 };
 
-export default About;
+export default withLayout(About);

@@ -1,15 +1,15 @@
 /* eslint-disable func-names */
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import withLayout from '../../hoc/withLayout';
 import styles from './Styles';
 
 const Settings = function () {
   return (
-    <SafeAreaView style={styles.page} edges={['top', 'left', 'right']}>
+    <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
-    </SafeAreaView>
+    </View>
   );
 };
 
-export default Settings;
+export default withLayout(Settings);

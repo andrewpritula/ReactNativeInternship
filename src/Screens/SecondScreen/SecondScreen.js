@@ -1,22 +1,21 @@
-/* eslint-disable func-names */
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import withLayout from '../../hoc/withLayout';
 import styles from './Styles';
 
-const SecondScreen = function ({ route }) {
+const SecondScreen = function SecondScreen({ route }) {
   const { stringParam } = route.params;
 
   return (
-    <SafeAreaView style={styles.page} edges={['top', 'left', 'right']}>
+    <View style={styles.container}>
       <Text style={styles.title}>Second Screen</Text>
       <Text style={styles.item}>
         Parameter from first screen:
         {' '}
         {stringParam}
       </Text>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -25,4 +24,4 @@ SecondScreen.propTypes = {
     params: PropTypes.shape.isRequired,
   }).isRequired,
 };
-export default SecondScreen;
+export default withLayout(SecondScreen);

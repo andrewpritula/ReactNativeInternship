@@ -1,6 +1,8 @@
 package com.internship;
 
 import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactActivityDelegate; // <- add this necessary import
+import com.zoontek.rnbootsplash.RNBootSplash; // <- add this necessary import
 import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
@@ -15,7 +17,14 @@ public class MainActivity extends ReactActivity {
   }
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(null);
+  protected ReactActivityDelegate createReactActivityDelegate() {
+    return new ReactActivityDelegate(this, getMainComponentName()) {
+
+      @Override
+      protected void loadApp(String appKey) {
+        RNBootSplash.init(MainActivity.this);
+        super.loadApp(appKey);
+      }
+    };
   }
 }

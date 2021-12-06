@@ -1,15 +1,15 @@
-/* eslint-disable func-names */
 import React from 'react';
+import RNBootSplash from 'react-native-bootsplash';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'react-native';
-import DrawerNavigator from './Navigation/DrawerNavigator';
+import DrawerNavigator from './route/DrawerNavigator';
 
-const App = function () {
+const App = function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar backgroundColor="#1DA1F2" barStyle="light-content" />
-      <NavigationContainer>
+      <StatusBar backgroundColor="lightblue" barStyle="dark-content" />
+      <NavigationContainer onReady={() => RNBootSplash.hide()}>
         <DrawerNavigator />
       </NavigationContainer>
     </SafeAreaProvider>

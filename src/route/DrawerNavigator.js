@@ -3,21 +3,24 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import BottomTabNavigator from './BottomTabNavigator';
-import Settings from '../Screens/SettingsScreen/Settings';
+import Settings from '../screens/SettingsScreen/Settings';
 
 const Drawer = createDrawerNavigator();
 
-// eslint-disable-next-line func-names
-const DrawerNavigator = function () {
+const DrawerNavigator = function DrawerNavigator() {
   return (
     <Drawer.Navigator screenOptions={
         {
           headerStyle: {
-            backgroundColor: '#1DA1F2',
+            backgroundColor: 'lightblue',
           },
-          headerTintColor: '#fff',
+          headerTintColor: 'black',
           headerTitleStyle: {
             fontWeight: 'bold',
+          },
+          drawerStyle: {
+            backgroundColor: 'lightblue',
+            width: 240,
           },
         }
       }
