@@ -3,13 +3,15 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import BottomTabNavigator from './BottomTabNavigator';
+import BooksTabNavigator from './BooksTabNavigator';
 import Settings from '../screens/SettingsScreen/Settings';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = function DrawerNavigator() {
   return (
-    <Drawer.Navigator screenOptions={
+    <Drawer.Navigator
+      screenOptions={
         {
           headerStyle: {
             backgroundColor: 'lightblue',
@@ -25,6 +27,13 @@ const DrawerNavigator = function DrawerNavigator() {
         }
       }
     >
+      <Drawer.Screen
+        name="DrawerBooks"
+        component={BooksTabNavigator}
+        options={{
+          title: 'Books',
+        }}
+      />
       <Drawer.Screen
         name="DrawerProfile"
         component={BottomTabNavigator}

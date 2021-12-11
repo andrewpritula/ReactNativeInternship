@@ -24,4 +24,5 @@ SecondScreen.propTypes = {
     params: PropTypes.shape.isRequired,
   }).isRequired,
 };
+
 export default withLayout(SecondScreen);
