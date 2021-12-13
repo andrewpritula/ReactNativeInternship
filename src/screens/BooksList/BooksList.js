@@ -4,13 +4,13 @@ import {
   View,
   FlatList,
   TouchableOpacity,
+  RefreshControl,
   Image,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './Styles';
 import withLayout from '../../hoc/withLayout';
-import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
 
 import {
@@ -103,7 +103,6 @@ const BooksList = function BookList() {
     );
   };
 
-  if (loading) return <Loader />;
   if (error) return <Error error={error} />;
   
   return (
@@ -115,6 +114,9 @@ const BooksList = function BookList() {
           keyExtractor={(item) => item.id.toString()}
           renderItem={renderItem}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={loading} onRefresh={fetchBooks} />
+          }
         />
       </View>
     </View>
