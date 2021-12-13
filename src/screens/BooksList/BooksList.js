@@ -10,6 +10,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './Styles';
 import withLayout from '../../hoc/withLayout';
+import Loader from '../../components/Loader/Loader';
+import Error from '../../components/Error/Error';
 
 import {
   getBooks,
@@ -18,7 +20,9 @@ import {
 } from '../../store/booklist/actions';
 
 const BooksList = function BookList() {
-  const { books, bookmarks } = useSelector((state) => state.booksReducer);
+  const {
+    books, bookmarks, loading, error 
+  } = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
 
   const fetchBooks = useCallback(() => dispatch(getBooks()), [dispatch]);
@@ -99,6 +103,9 @@ const BooksList = function BookList() {
     );
   };
 
+  if (loading) return <Loader />;
+  if (error) return <Error error={error} />;
+  
   return (
     <View style={styles.container}>
       <Text style={styles.pageTitle}>Bestsellers</Text>

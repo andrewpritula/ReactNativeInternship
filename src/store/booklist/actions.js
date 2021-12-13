@@ -1,6 +1,7 @@
 /* eslint-disable no-unreachable */
 import axios from 'axios';
 import {
+  LOADING,
   GET_BOOKS,
   GET_ERROR,
   ADD_TO_BOOKMARK_LIST,
@@ -10,6 +11,9 @@ import url from '../../../config';
 
 export const getBooks = () => async (dispatch) => {
   const { BASE_URL } = url;
+  dispatch({
+    type: LOADING,
+  });
   try {
     const res = await axios.get(`${BASE_URL}`);
     dispatch({
@@ -19,7 +23,7 @@ export const getBooks = () => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: GET_ERROR,
-      payload: e,
+      payload: e.message,
     });
   }
 };
