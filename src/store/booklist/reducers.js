@@ -1,5 +1,6 @@
 import {
   GET_BOOKS,
+  GET_ERROR,
   ADD_TO_BOOKMARK_LIST,
   REMOVE_FROM_BOOKMARK_LIST,
 } from './types';
@@ -7,13 +8,15 @@ import {
 const initialState = {
   books: [],
   bookmarks: [],
+  error: null,
 };
 
-// eslint-disable-next-line default-param-last
-function booksReducer(state = initialState, action) {
+function booksReducer(state = initialState, action = {}) {
   switch (action.type) {
     case GET_BOOKS:
       return { ...state, books: action.payload };
+    case GET_ERROR:
+      return { ...state, error: action.payload };
     case ADD_TO_BOOKMARK_LIST:
       return { ...state, bookmarks: [...state.bookmarks, action.payload] };
     case REMOVE_FROM_BOOKMARK_LIST:

@@ -29,13 +29,13 @@ const BooksList = function BookList() {
     fetchBooks();
   }, [fetchBooks]);
 
-  const handleAddBookmark = (book) => {
+  const handleAddBookmark = useCallback((book) => {
     addToBookmarkList(book);
-  };
+  }, [addToBookmarkList]);
 
-  const handleRemoveBookmark = (book) => {
+  const handleRemoveBookmark = useCallback((book) => {
     removeFromBookmarkList(book);
-  };
+  }, [removeFromBookmarkList]);
 
   const ifExists = (book) => {
     if (bookmarks.filter((item) => item.id === book.id).length > 0) {
@@ -87,9 +87,9 @@ const BooksList = function BookList() {
                 style={styles.touchableItem}
               >
                 <MaterialCommunityIcons
-                  color={ifExists(item) ? 'red' : 'grey'}
+                  color={ifExists(item) ? 'lightblue' : 'grey'}
                   size={24}
-                  name={ifExists(item) ? 'bookmark-outline' : 'bookmark'}
+                  name="bookmark"
                 />
               </TouchableOpacity>
             </View>

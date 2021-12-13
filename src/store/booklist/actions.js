@@ -2,28 +2,25 @@
 import axios from 'axios';
 import {
   GET_BOOKS,
+  GET_ERROR,
   ADD_TO_BOOKMARK_LIST,
   REMOVE_FROM_BOOKMARK_LIST,
 } from './types';
-import { BASE_URL } from '../../../config';
+import url from '../../../config';
 
-// Define action creators
-export const getBooks = () => {
+export const getBooks = () => async (dispatch) => {
+  const { BASE_URL } = url;
   try {
-    return async (dispatch) => {
-      const response = await axios.get(`${BASE_URL}`);
-      // console.log('DATA ========>', response.data);
-      if (response.data) {
-        dispatch({
-          type: GET_BOOKS,
-          payload: response.data,
-        });
-      } else {
-        console.log('Unable to fetch data from the API BASE URL!');
-      }
-    };
-  } catch (error) {
-    console.log(error);
+    const res = await axios.get(`${BASE_URL}`);
+    dispatch({
+      type: GET_BOOKS,
+      payload: res.data
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_ERROR,
+      payload: e,
+    });
   }
 };
 

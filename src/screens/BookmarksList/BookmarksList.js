@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   Text,
   View,
@@ -18,9 +18,9 @@ const BookmarksList = function BookmarksList() {
 
   const removeFromBookmarkList = (book) => dispatch(removeBookmark(book));
 
-  const handleRemoveBookmark = (book) => {
+  const handleRemoveBookmark = useCallback((book) => {
     removeFromBookmarkList(book);
-  };
+  }, [removeFromBookmarkList]);
 
   const renderItem = ({ item }) => {
     return (
@@ -62,7 +62,7 @@ const BookmarksList = function BookmarksList() {
                 style={styles.touchableItem}
               >
                 <MaterialCommunityIcons
-                  color="#64676D"
+                  color="grey"
                   size={24}
                   name="bookmark-remove"
                 />
