@@ -5,21 +5,48 @@ import {
   TextInput,
   Text,
   View,
-  ScrollView,
+  SectionList,
 } from 'react-native';
 import withLayout from '../../hoc/withLayout';
 import styles from './Styles';
 
 const Profile = function Profile({ navigation }) {
-  const [name] = useState('John');
-  const [sername] = useState('Wick');
-  const [nickname] = useState('Boogeyman');
-  const [gender] = useState('Male');
-  const [origin] = useState('Belarus');
-  const [nationality] = useState('Soviet, American');
-  const [occupation] = useState('Proffesional hitman');
   const [mood, setMood] = useState('Where is my dog?');
   const [textInput, setTextInput] = useState();
+  const DATA = [
+    {
+      title: 'Main info',
+      data: [
+        { title: 'Name:', value: 'John' }, 
+        { title: 'Sername:', value: 'Wick' },
+        { title: 'Birth date:', value: 'September 12, 1964' },
+        { title: 'Age:', value: '57' }
+      ]
+    },
+    {
+      title: 'Other info',
+      data: [
+        { title: 'Nickname:', value: 'Boogeyman' }, 
+        { title: 'Gender:', value: 'Male' }, 
+        { title: 'Nationality:', value: 'Soviet, American' },
+        { title: 'Origin:', value: 'Belarus' },
+        { title: 'Occupation:', value: 'Hitman' },
+        { title: 'Mood:', value: mood }
+      ]
+    },
+  ];
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.itemContainer}>
+        <Text style={styles.title}>
+          {item.title}
+        </Text>
+        <Text style={styles.item}>
+          {item.value}
+        </Text>
+      </View>
+    );
+  };
 
   const submitHandler = useCallback((value) => {
     setTextInput('');
@@ -41,7 +68,7 @@ const Profile = function Profile({ navigation }) {
             });
           }}
         >
-          <Text style={styles.item}>Go to second screen</Text>
+          <Text style={styles.buttonTitle}>Go to second screen</Text>
         </TouchableOpacity>
       </View>
       <TextInput
@@ -52,24 +79,17 @@ const Profile = function Profile({ navigation }) {
         onSubmitEditing={submitHandler}
         value={textInput}
       />
-      <ScrollView>
-        <Text style={styles.title}>Name:</Text>
-        <Text style={styles.item}>{name}</Text>
-        <Text style={styles.title}>Sername:</Text>
-        <Text style={styles.item}>{sername}</Text>
-        <Text style={styles.title}>Nickname:</Text>
-        <Text style={styles.item}>{nickname}</Text>
-        <Text style={styles.title}>Gender:</Text>
-        <Text style={styles.item}>{gender}</Text>
-        <Text style={styles.title}>Origin:</Text>
-        <Text style={styles.item}>{origin}</Text>
-        <Text style={styles.title}>Nationality:</Text>
-        <Text style={styles.item}>{nationality}</Text>
-        <Text style={styles.title}>Occupation:</Text>
-        <Text style={styles.item}>{occupation}</Text>
-        <Text style={styles.title}>Mood:</Text>
-        <Text style={styles.item}>{mood}</Text>
-      </ScrollView>
+      <SectionList
+        sections={DATA}
+        keyExtractor={(item, index) => item + index}
+        renderItem={renderItem}
+        style={styles.listContainer}
+        renderSectionHeader={({ section: { title } }) => (
+          <View style={styles.headerContainer}>
+            <Text style={styles.header}>{title}</Text>
+          </View>
+        )}
+      />
     </>
   );
 };

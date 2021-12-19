@@ -103,7 +103,7 @@ const BooksList = function BookList() {
     );
   };
 
-  if (error) return <Error error={error} />;
+  if (error) return <Error error={error} fetchBooks={fetchBooks} />;
   
   return (
     <View style={styles.container}>

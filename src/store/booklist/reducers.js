@@ -1,7 +1,7 @@
 import {
   LOADING,
-  GET_BOOKS,
-  GET_ERROR,
+  GET_BOOKS_SUCCESS,
+  GET_BOOKS_ERROR,
   ADD_TO_BOOKMARK_LIST,
   REMOVE_FROM_BOOKMARK_LIST,
 } from './types';
@@ -15,10 +15,12 @@ const initialState = {
 function booksReducer(state = initialState, action = {}) {
   switch (action.type) {
     case LOADING:
-      return { ...state, loading: true };
-    case GET_BOOKS:
-      return { ...state, books: action.payload, loading: false };
-    case GET_ERROR:
+      return { ...state, loading: true, error: false };
+    case GET_BOOKS_SUCCESS:
+      return {
+        ...state, books: action.payload, loading: false, error: false 
+      };
+    case GET_BOOKS_ERROR:
       return { ...state, error: action.payload, loading: false };
     case ADD_TO_BOOKMARK_LIST:
       return { ...state, bookmarks: [...state.bookmarks, action.payload] };

@@ -8,7 +8,24 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'black',
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  btnContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  button: {
+    alignItems: 'center',
+    borderRadius: 35,
+    backgroundColor: 'lightblue',
+    padding: 10,
+    margin: 10
+  },
+  buttonTitle: {
+    fontSize: 16,
+    color: 'black',
   },
 });
 

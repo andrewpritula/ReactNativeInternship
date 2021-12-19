@@ -2,7 +2,7 @@ import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileStackNavigator from './ProfileStackNavigator';
-import AboutStackNavigator from './AboutStackNavigator';
+import About from '../screens/AboutScreen/About';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +28,7 @@ const BottomTabNavigator = function BottomTabNavigator() {
       />
       <Tab.Screen
         name="TabAbout"
-        component={AboutStackNavigator}
+        component={About}
         options={{
           title: 'About',
           tabBarIcon: aboutIcon

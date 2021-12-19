@@ -11,6 +11,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator = function DrawerNavigator() {
   return (
     <Drawer.Navigator
+      initialRouteName="DrawerBooks"
       screenOptions={
         {
           headerStyle: {
