@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './Styles';
@@ -13,6 +14,7 @@ import { removeBookmark } from '../../store/booklist/actions';
 import withLayout from '../../hoc/withLayout';
 
 const BookmarksList = function BookmarksList() {
+  const { colors } = useTheme();
   const { bookmarks } = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
 
@@ -24,7 +26,7 @@ const BookmarksList = function BookmarksList() {
 
   const renderItem = ({ item }) => {
     return (
-      <View style={styles.item}>
+      <View style={[styles.item, { backgroundColor: colors.backgroundColor }]}>
         <View style={styles.itemContainer}>
           {/* Book Cover */}
           <Image
@@ -36,23 +38,23 @@ const BookmarksList = function BookmarksList() {
           <View style={styles.itemDescription}>
             {/* Book Title */}
             <View>
-              <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={[styles.itemTitle, { color: colors.text }]}>{item.title}</Text>
             </View>
             {/* Meta info */}
             <View style={styles.itemInfo}>
               <MaterialCommunityIcons
-                color="#64676D"
+                color={colors.text}
                 name="book-open-page-variant"
                 size={20}
               />
-              <Text style={styles.itemField}>{item.num_pages}</Text>
+              <Text style={[styles.itemField, { color: colors.text }]}>{item.num_pages}</Text>
               <MaterialCommunityIcons
-                color="#64676D"
+                color={colors.text}
                 name="star"
                 size={20}
-                style={styles.secondIcon}
+                style={[styles.secondIcon, { color: colors.text }]}
               />
-              <Text style={styles.itemField}>{item.rating}</Text>
+              <Text style={[styles.itemField, { color: colors.text }]}>{item.rating}</Text>
             </View>
             {/* Buttons */}
             <View style={styles.touchableContainer}>
@@ -62,7 +64,7 @@ const BookmarksList = function BookmarksList() {
                 style={styles.touchableItem}
               >
                 <MaterialCommunityIcons
-                  color="grey"
+                  color={colors.primary}
                   size={24}
                   name="bookmark-remove"
                 />
@@ -76,7 +78,7 @@ const BookmarksList = function BookmarksList() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.pageTitle}>Bookmarks</Text>
+      <Text style={[styles.pageTitle, { color: colors.text }]}>Bookmarks</Text>
       <View style={styles.booklist}>
         {bookmarks.length === 0 ? (
           <Text style={styles.noItemsTitle}>No one favorite book</Text>

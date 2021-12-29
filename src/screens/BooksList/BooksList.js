@@ -7,6 +7,7 @@ import {
   RefreshControl,
   Image,
 } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './Styles';
@@ -20,6 +21,7 @@ import {
 } from '../../store/booklist/actions';
 
 const BooksList = function BookList() {
+  const { colors } = useTheme();
   const {
     books, bookmarks, loading, error 
   } = useSelector((state) => state.booksReducer);
@@ -51,7 +53,7 @@ const BooksList = function BookList() {
 
   const renderItem = ({ item }) => {
     return (
-      <View style={styles.item}>
+      <View style={[styles.item, { backgroundColor: colors.backgroundColor }]}>
         <View style={styles.itemContainer}>
           {/* Book Cover */}
           <Image
@@ -63,23 +65,23 @@ const BooksList = function BookList() {
           <View style={styles.itemDescription}>
             {/* Book Title */}
             <View>
-              <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={[styles.itemTitle, { color: colors.text }]}>{item.title}</Text>
             </View>
             {/* Meta info */}
             <View style={styles.itemInfo}>
               <MaterialCommunityIcons
-                color="#64676D"
+                color={colors.text}
                 name="book-open-page-variant"
                 size={20}
               />
-              <Text style={styles.itemField}>{item.num_pages}</Text>
+              <Text style={[styles.itemField, { color: colors.text }]}>{item.num_pages}</Text>
               <MaterialCommunityIcons
-                color="#64676D"
+                color={colors.text}
                 name="star"
                 size={20}
                 style={styles.secondIcon}
               />
-              <Text style={styles.itemField}>{item.rating}</Text>
+              <Text style={[styles.itemField, { color: colors.text }]}>{item.rating}</Text>
             </View>
             {/* Buttons */}
             <View style={styles.touchableContainer}>
@@ -91,7 +93,7 @@ const BooksList = function BookList() {
                 style={styles.touchableItem}
               >
                 <MaterialCommunityIcons
-                  color={ifExists(item) ? 'lightblue' : 'grey'}
+                  color={ifExists(item) ? colors.primary : 'grey'}
                   size={24}
                   name="bookmark"
                 />
@@ -107,7 +109,7 @@ const BooksList = function BookList() {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.pageTitle}>Bestsellers</Text>
+      <Text style={[styles.pageTitle, { color: colors.text }]}>Bestsellers</Text>
       <View style={styles.booklist}>
         <FlatList
           data={books}

@@ -11,36 +11,31 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator = function DrawerNavigator() {
   return (
     <Drawer.Navigator
-      initialRouteName="DrawerBooks"
+      initialRouteName="DrawerProfile"
       screenOptions={
         {
-          headerStyle: {
-            backgroundColor: 'lightblue',
-          },
-          headerTintColor: 'black',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
           drawerStyle: {
-            backgroundColor: 'lightblue',
             width: 240,
           },
         }
       }
     >
       <Drawer.Screen
-        name="DrawerBooks"
-        component={BooksTabNavigator}
-        options={{
-          title: 'Books',
-        }}
-      />
-      <Drawer.Screen
         name="DrawerProfile"
         component={BottomTabNavigator}
         options={{
           title: 'Profile',
         }} 
+      />
+      <Drawer.Screen
+        name="DrawerBooks"
+        component={BooksTabNavigator}
+        options={{
+          title: 'Books',
+        }}
       />
       <Drawer.Screen
         name="DrawerSettings"

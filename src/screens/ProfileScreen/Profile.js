@@ -1,16 +1,18 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
-  TouchableOpacity,
   TextInput,
   Text,
   View,
   SectionList,
 } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import withLayout from '../../hoc/withLayout';
+import MyButton from '../../components/MyButton/MyButton';
 import styles from './Styles';
 
 const Profile = function Profile({ navigation }) {
+  const { colors } = useTheme();
   const [mood, setMood] = useState('Where is my dog?');
   const [textInput, setTextInput] = useState();
   const DATA = [
@@ -35,19 +37,26 @@ const Profile = function Profile({ navigation }) {
       ]
     },
   ];
+  
   const renderItem = ({ item }) => {
     return (
-      <View style={styles.itemContainer}>
-        <Text style={styles.title}>
+      <View style={[styles.itemContainer, { backgroundColor: colors.background }]}>
+        <Text style={[styles.title, { color: colors.text }]}>
           {item.title}
         </Text>
-        <Text style={styles.item}>
+        <Text style={[styles.item, { color: colors.text }]}>
           {item.value}
         </Text>
       </View>
     );
   };
 
+  const navigate = () => {
+    navigation.navigate('StackSecondScreen', {
+      stringParam: 'String from Profile screen',
+    });
+  };
+  
   const submitHandler = useCallback((value) => {
     setTextInput('');
     setMood(value.nativeEvent.text);
@@ -59,21 +68,10 @@ const Profile = function Profile({ navigation }) {
 
   return (
     <>
-      <View style={styles.btnContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate('StackSecondScreen', {
-              stringParam: 'String from Profile screen',
-            });
-          }}
-        >
-          <Text style={styles.buttonTitle}>Go to second screen</Text>
-        </TouchableOpacity>
-      </View>
+      <MyButton func={navigate} title="Go to second screen" />
       <TextInput
         placeholder="Change my mood"
-        placeholderTextColor="grey" 
+        placeholderTextColor={colors.text}
         style={styles.input}
         onChangeText={changeHandler}
         onSubmitEditing={submitHandler}
@@ -85,8 +83,8 @@ const Profile = function Profile({ navigation }) {
         renderItem={renderItem}
         style={styles.listContainer}
         renderSectionHeader={({ section: { title } }) => (
-          <View style={styles.headerContainer}>
-            <Text style={styles.header}>{title}</Text>
+          <View style={[styles.headerContainer, { backgroundColor: colors.card }]}>
+            <Text style={[styles.header, { color: colors.text }]}>{title}</Text>
           </View>
         )}
       />

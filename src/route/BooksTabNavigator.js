@@ -19,9 +19,6 @@ const BooksTabnavigator = function BooksTabnavigator() {
       initialRouteName="BooksList"
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: 'lightblue',
-        } 
       }}
     >
       <Tab.Screen

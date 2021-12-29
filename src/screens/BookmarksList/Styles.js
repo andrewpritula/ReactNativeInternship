@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   pageTitle: {
-    color: 'black',
     fontSize: 22,
   },
   booklist: {
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 22,
     paddingRight: 16,
-    color: 'black',
+    color: 'red',
   },
   itemInfo: {
     flexDirection: 'row',
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
   itemField: {
     fontSize: 14,
     paddingLeft: 10,
-    color: '#64676D',
   },
   secondIcon: {
     paddingLeft: 16,
@@ -60,7 +58,6 @@ const styles = StyleSheet.create({
     width: 40,
   },
   noItemsTitle: {
-    color: '#64676D',
     fontSize: 18,
   },
 });

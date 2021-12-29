@@ -1,13 +1,16 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  buttonContainer: {
     padding: 10,
   },
-  title: {
+  button: {
+    padding: 10,
+    alignItems: 'center',
+    borderRadius: 2
+  },
+  buttonTitle: {
     fontSize: 20,
-    fontWeight: 'bold'
   },
 });
 

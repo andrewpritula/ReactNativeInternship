@@ -7,15 +7,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }, 
   title: {
-    color: 'black',
     margin: 5,
     fontSize: 18,
     fontWeight: 'bold',
     paddingLeft: 5
   },
-  item: {
-    color: 'red',
-  }
 });
 
 export default styles;
