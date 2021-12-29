@@ -7,7 +7,7 @@ import themeReducer from './theme/reducers';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['bookmarks', 'scheme'],
+  whitelist: ['bookmarks', 'scheme', 'phoneThemeEnabled'],
 };
 
 const rootReducer = combineReducers({
