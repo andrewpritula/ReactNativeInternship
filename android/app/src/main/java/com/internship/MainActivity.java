@@ -1,8 +1,9 @@
 package com.internship;
 
+import android.content.res.Configuration;
 import com.facebook.react.ReactActivity;
-import com.facebook.react.ReactActivityDelegate; // <- add this necessary import
-import com.zoontek.rnbootsplash.RNBootSplash; // <- add this necessary import
+import com.facebook.react.ReactActivityDelegate;
+import com.zoontek.rnbootsplash.RNBootSplash;
 import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {

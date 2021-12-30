@@ -36,8 +36,8 @@ const Settings = function Settings() {
           Enable phone theme
         </Text>
         <Switch
-          trackColor={{ false: '#8a8a8a', true: '#6eff66' }}
-          thumbColor={isPhoneTheme ? '#2f9400' : '#cccccc'}
+          trackColor={{ false: '#8a8a8a', true: '#525252' }}
+          thumbColor={isPhoneTheme ? colors.card : '#cccccc'}
           onValueChange={togglePhoneTheme}
           value={isPhoneTheme}
         />
@@ -47,8 +47,8 @@ const Settings = function Settings() {
           Enable dark theme
         </Text>
         <Switch
-          trackColor={{ false: '#8a8a8a', true: '#6eff66' }}
-          thumbColor={isCustomTheme ? '#2f9400' : '#cccccc'}
+          trackColor={{ false: '#8a8a8a', true: '#525252' }}
+          thumbColor={isCustomTheme ? colors.card : '#cccccc'}
           onValueChange={toggleCustomTheme}
           value={isCustomTheme}
         />
