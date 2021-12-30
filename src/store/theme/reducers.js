@@ -1,22 +1,22 @@
 import {
-  TOGGLE_LIGHT_THEME,
-  TOGGLE_DARK_THEME,
-  TOGGLE_PHONE_THEME,
+  TOGGLE_THEME,
 } from './types';
 
 const initialState = {
   scheme: 'light',
-  phoneThemeEnabled: false
+  isPhoneTheme: false,
+  isCustomTheme: false
 };
 
 function themeReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case TOGGLE_LIGHT_THEME:
-      return { ...state, scheme: 'light', phoneThemeEnabled: false };
-    case TOGGLE_DARK_THEME:
-      return { ...state, scheme: 'dark', phoneThemeEnabled: false };
-    case TOGGLE_PHONE_THEME:
-      return { ...state, scheme: action.payload, phoneThemeEnabled: true };
+    case TOGGLE_THEME:
+      return {
+        ...state, 
+        scheme: action.payload.scheme,
+        isPhoneTheme: action.payload.isPhoneTheme,
+        isCustomTheme: action.payload.isCustomTheme
+      };
     default:
       return state;
   }

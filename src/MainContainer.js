@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar, useColorScheme } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import DrawerNavigator from './route/DrawerNavigator';
-import { togglePhoneTheme } from './store/theme/actions';
+import { toggleTheme } from './store/theme/actions';
 
 const MyLightTheme = {
   colors: {
@@ -26,14 +26,14 @@ const MyDarkTheme = {
 };
 
 const MainContainer = function MainContainer() {
-  const { scheme, phoneThemeEnabled } = useSelector((state) => state.themeReducer);
+  const { scheme, isPhoneTheme } = useSelector((state) => state.themeReducer);
   const dispatch = useDispatch();
   const phoneTheme = useColorScheme();
-  const enablePhoneTheme = (deviseTheme) => dispatch(togglePhoneTheme(deviseTheme));
+  const enableTheme = (theme, isDeviseTheme) => dispatch(toggleTheme(theme, isDeviseTheme));
 
   useEffect(() => {
-    if (phoneThemeEnabled) {
-      enablePhoneTheme(phoneTheme);
+    if (isPhoneTheme) {
+      enableTheme(phoneTheme, true);
     }
   }, [phoneTheme]);
   return (

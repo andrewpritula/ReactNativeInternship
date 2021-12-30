@@ -2,12 +2,13 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({ 
   themeContainer: {
-    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    padding: 10
   },
   title: {
-    margin: 5,
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 24,
   },
 });
 
