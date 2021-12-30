@@ -33,10 +33,11 @@ const Settings = function Settings() {
     <View style={{ backgroundColor: colors.background }}>
       <View style={styles.themeContainer}>
         <Text style={[styles.title, { color: colors.text }]}>
-          Enable phone Theme
+          Enable phone theme
         </Text>
         <Switch
-          thumbColor={isPhoneTheme ? '#249225' : '#f4f3f4'}
+          trackColor={{ false: '#8a8a8a', true: '#6eff66' }}
+          thumbColor={isPhoneTheme ? '#2f9400' : '#cccccc'}
           onValueChange={togglePhoneTheme}
           value={isPhoneTheme}
         />
@@ -46,7 +47,8 @@ const Settings = function Settings() {
           Enable dark theme
         </Text>
         <Switch
-          thumbColor={isCustomTheme ? '#249225' : '#f4f3f4'}
+          trackColor={{ false: '#8a8a8a', true: '#6eff66' }}
+          thumbColor={isCustomTheme ? '#2f9400' : '#cccccc'}
           onValueChange={toggleCustomTheme}
           value={isCustomTheme}
         />

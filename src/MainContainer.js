@@ -29,11 +29,15 @@ const MainContainer = function MainContainer() {
   const { scheme, isPhoneTheme } = useSelector((state) => state.themeReducer);
   const dispatch = useDispatch();
   const phoneTheme = useColorScheme();
-  const enableTheme = (theme, isDeviseTheme) => dispatch(toggleTheme(theme, isDeviseTheme));
+  const enableTheme = (
+    theme, 
+    isDeviseTheme, 
+    isCustomTheme
+  ) => dispatch(toggleTheme(theme, isDeviseTheme, isCustomTheme));
 
   useEffect(() => {
     if (isPhoneTheme) {
-      enableTheme(phoneTheme, true);
+      enableTheme(phoneTheme, true, false);
     }
   }, [phoneTheme]);
   return (
