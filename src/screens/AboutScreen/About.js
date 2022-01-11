@@ -29,7 +29,6 @@ const About = function About() {
           color="red"
           name="map-marker-radius"
           size={40}
-          style={styles.secondIcon}
         />
       </Marker>
       <Polygon
