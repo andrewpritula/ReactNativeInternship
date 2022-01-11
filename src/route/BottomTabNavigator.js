@@ -8,7 +8,7 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = function BottomTabNavigator() {
   const profileIcon = ({ color }) => <MaterialCommunityIcons name="account" color={color} size={26} />;
-  const aboutIcon = ({ color }) => <MaterialCommunityIcons name="tooltip-account" color={color} size={26} />;
+  const aboutIcon = ({ color }) => <MaterialCommunityIcons name="map-marker" color={color} size={26} />;
   return (
     <Tab.Navigator
       screenOptions={{
@@ -27,7 +27,7 @@ const BottomTabNavigator = function BottomTabNavigator() {
         name="TabAbout"
         component={About}
         options={{
-          title: 'About',
+          title: 'Location',
           tabBarIcon: aboutIcon
         }}
       />
