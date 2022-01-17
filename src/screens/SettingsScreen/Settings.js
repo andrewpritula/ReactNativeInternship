@@ -1,17 +1,19 @@
 import React, { useCallback } from 'react';
 import {
-  Text, View, useColorScheme, Switch 
+  View, useColorScheme, Platform 
 } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import withLayout from '../../hoc/withLayout';
-import styles from './Styles';
+import ThemeToggler from './ThemeToggler';
 
 import {
   toggleTheme
 } from '../../store/theme/actions';
 
 const Settings = function Settings() {
+  const { OS } = Platform;
+  const { Version } = Platform;
   const { colors } = useTheme();
   const phoneTheme = useColorScheme();
   const { isPhoneTheme, isCustomTheme } = useSelector((state) => state.themeReducer);
@@ -21,38 +23,31 @@ const Settings = function Settings() {
     if (!isPhoneTheme) {
       enableTheme(phoneTheme, true, false);
     } else enableTheme('light', false, false);
-  }, [isPhoneTheme]);
+  }, [enableTheme]);
 
   const toggleCustomTheme = useCallback(() => {
     if (!isCustomTheme) {
       enableTheme('dark', false, true);
     } else enableTheme('light', false, false);
-  }, [isCustomTheme]);
+  }, [enableTheme]);
 
   return (
     <View style={{ backgroundColor: colors.background }}>
-      <View style={styles.themeContainer}>
-        <Text style={[styles.title, { color: colors.text }]}>
-          Enable phone theme
-        </Text>
-        <Switch
-          trackColor={{ false: '#8a8a8a', true: '#525252' }}
-          thumbColor={isPhoneTheme ? colors.card : '#cccccc'}
-          onValueChange={togglePhoneTheme}
-          value={isPhoneTheme}
-        />
-      </View>
-      <View style={styles.themeContainer}>
-        <Text style={[styles.title, { color: colors.text }]}>
-          Enable dark theme
-        </Text>
-        <Switch
-          trackColor={{ false: '#8a8a8a', true: '#525252' }}
-          thumbColor={isCustomTheme ? colors.card : '#cccccc'}
-          onValueChange={toggleCustomTheme}
-          value={isCustomTheme}
-        />
-      </View>
+      {OS === 'android' && Version >= 29 
+      && (
+      <ThemeToggler 
+        title="Enable phone theme"
+        colors={colors}
+        isThemeEnabled={isPhoneTheme}
+        toggleTheme={togglePhoneTheme}
+      />
+      )}
+      <ThemeToggler 
+        title="Enable dark theme"
+        colors={colors}
+        isThemeEnabled={isCustomTheme}
+        toggleTheme={toggleCustomTheme}
+      />
     </View>
   );
 };
