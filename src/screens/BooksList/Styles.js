@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,6 +56,12 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
   },
+  imageBook: {
+    width: Dimensions.get('window').width - 20,
+    height: Dimensions.get('window').height - 20,
+    borderRadius: 10,
+    margin: 10
+  }
 });
 
 export default styles;
