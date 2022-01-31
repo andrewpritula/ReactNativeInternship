@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import {
   Text,
   View,
@@ -11,6 +12,7 @@ import styles from './Styles';
 import withLayout from '../../hoc/withLayout';
 import Error from '../../components/Error/Error';
 import Item from './Item';
+import MyButton from '../../components/MyButton/MyButton';
 
 import {
   getBooks,
@@ -18,7 +20,7 @@ import {
   removeBookmark,
 } from '../../store/booklist/actions';
 
-const BooksList = function BookList() {
+const BooksList = function BookList({ navigation }) {
   const { colors } = useTheme();
   const {
     books, bookmarks, loading, error 
@@ -43,15 +45,24 @@ const BooksList = function BookList() {
 
   const ifExists = (book) => bookmarks.filter((item) => item.id === book.id).length;
 
+  const navigate = (item) => {
+    navigation.navigate('StackBook', {
+      item
+    });
+  };
+
   const renderItem = ({ item }) => {
     return (
-      <Item
-        item={item}
-        handleRemoveBookmark={() => handleRemoveBookmark(item)}
-        handleAddBookmark={() => handleAddBookmark(item)}
-        ifExists={() => ifExists(item)}
-        colors={colors}
-      />
+      <>
+        <Item
+          item={item}
+          handleRemoveBookmark={() => handleRemoveBookmark(item)}
+          handleAddBookmark={() => handleAddBookmark(item)}
+          ifExists={() => ifExists(item)}
+          colors={colors}
+        />
+        <MyButton func={() => navigate(item)} title="Open Book" />
+      </>
     );
   };
 
@@ -73,6 +84,12 @@ const BooksList = function BookList() {
       </View>
     </View>
   );
+};
+
+BooksList.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default withLayout(BooksList);

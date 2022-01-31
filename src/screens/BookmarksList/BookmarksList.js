@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import {
   Text,
   View,
@@ -10,8 +11,9 @@ import styles from './Styles';
 import { removeBookmark } from '../../store/booklist/actions';
 import withLayout from '../../hoc/withLayout';
 import Item from './Item';
+import MyButton from '../../components/MyButton/MyButton';
 
-const BookmarksList = function BookmarksList() {
+const BookmarksList = function BookmarksList({ navigation }) {
   const { colors } = useTheme();
   const { bookmarks } = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
@@ -22,13 +24,22 @@ const BookmarksList = function BookmarksList() {
     removeFromBookmarkList(book);
   }, [removeFromBookmarkList]);
 
+  const navigate = (item) => {
+    navigation.navigate('StackBook', {
+      item
+    });
+  };
+
   const renderItem = ({ item }) => {
     return (
-      <Item
-        item={item}
-        handleRemoveBookmark={() => handleRemoveBookmark(item)}
-        colors={colors}
-      />
+      <>
+        <Item
+          item={item}
+          handleRemoveBookmark={() => handleRemoveBookmark(item)}
+          colors={colors}
+        />
+        <MyButton func={() => navigate(item)} title="Open Book" />
+      </>
     );
   };
 
@@ -49,6 +60,12 @@ const BookmarksList = function BookmarksList() {
       </View>
     </View>
   );
+};
+
+BookmarksList.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default withLayout(BookmarksList);

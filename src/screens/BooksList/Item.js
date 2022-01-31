@@ -10,7 +10,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import styles from './Styles';
 
 const Item = function Item({
-  item, ifExists, handleAddBookmark, handleRemoveBookmark, colors 
+  item, ifExists, handleAddBookmark, handleRemoveBookmark, colors
 }) {
   return (
     <View style={[styles.item, { backgroundColor: colors.backgroundColor }]}>

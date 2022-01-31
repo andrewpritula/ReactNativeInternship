@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import BooksList from '../screens/BooksList/BooksList';
+import BooksDetailsStackNavigator from './BookDetailsStackNavigator';
 import BookmarksList from '../screens/BookmarksList/BookmarksList';
 
 const Tab = createBottomTabNavigator();
@@ -23,7 +23,7 @@ const BooksTabnavigator = function BooksTabnavigator() {
     >
       <Tab.Screen
         name="BooksList"
-        component={BooksList}
+        component={BooksDetailsStackNavigator}
         options={{
           title: 'Books',
           tabBarIcon: booksIcon,
