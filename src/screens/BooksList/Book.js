@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -16,13 +15,11 @@ const Book = function Book({ route }) {
     authors, 
     description, 
     format, 
-    num_pages,
-    review_count, 
-    genres,  
-    Quote1, 
-    Quote2, 
-    Quote3 
+    num_pages: numPages,
+    review_count: reviewCount, 
+    genres,
   } = route.params.item;
+  const Quotes = [route.params.item.Quote1, route.params.item.Quote2, route.params.item.Quote3];
   const { colors } = useTheme();
   return (
     <ScrollView>
@@ -30,7 +27,7 @@ const Book = function Book({ route }) {
         source={{ uri: route.params.item.image_url }}
         style={styles.imageBook}
       />
-      <View style={styles.container}>
+      <View>
         <Text style={[styles.pageTitle, { color: colors.text }]}>
           Title:
           {' '}
@@ -54,31 +51,22 @@ const Book = function Book({ route }) {
         <Text style={[styles.itemField, { color: colors.text }]}>
           Number of pages:
           {' '}
-          { num_pages }
+          { numPages }
         </Text>
         <Text style={[styles.itemField, { color: colors.text }]}>
           Review count:
           {' '}
-          { review_count }
+          { reviewCount }
         </Text>
         <Text style={[styles.itemField, { color: colors.text }]}>
           Genres:
           {' '}
           { genres }
         </Text>
-        <Text style={[styles.itemField, { color: colors.text }]}>
-          Quote 1:
-          {' '}
-          { Quote1 }
-        </Text>
-        <Text style={[styles.itemField, { color: colors.text }]}>
-          Quote 2:
-          { Quote2 }
-        </Text>
-        <Text style={[styles.itemField, { color: colors.text }]}>
-          Quote 3:
-          { Quote3 }
-        </Text>
+        <Text style={[styles.quotesTitle, { color: colors.text }]}>Quotes:</Text>
+        {Quotes.map((quote, index) => (
+          <Text key={index.toString()} style={[styles.itemField, { color: colors.text }]}>{ quote }</Text>
+        ))}
       </View>
     </ScrollView>
   );

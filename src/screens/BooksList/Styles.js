@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   pageTitle: {
+    alignSelf: 'center',
     fontSize: 22,
   },
   booklist: {
@@ -58,9 +59,15 @@ const styles = StyleSheet.create({
   },
   imageBook: {
     width: Dimensions.get('window').width - 20,
-    height: Dimensions.get('window').height - 20,
+    height: Dimensions.get('window').height / 1.2,
     borderRadius: 10,
-    margin: 10
+    margin: 10,
+    resizeMode: 'contain'
+  },
+  quotesTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    alignSelf: 'center'
   }
 });
 
